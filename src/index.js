@@ -15,7 +15,7 @@ const Square = (props) => { //клетка
 }
    
 const Board = (props) => { //поле
-      let  renderSquare = (i) => {
+      const  renderSquare = (i) => {
          return <Square clasS={props.clasS[i]} value={props.squares[i]} onClick={ ()=>props.onClick(i) } />;
       }
          return (
@@ -110,7 +110,7 @@ const Board = (props) => { //поле
             
             const history = this.state.history;
             const current = history[this.state.stepNumber];
-            let winner = calculateWinner(current.squares);
+            const winner = calculateWinner(current.squares);
             let status;
 
             const moves = history.map((step, move) => {
@@ -150,11 +150,13 @@ const Board = (props) => { //поле
                );
             }
          }
-         
+         const StartAPP = (props) => {
+            return <Game /> ;
+         }
          // ========================================
          
    ReactDOM.render(
-      <Game />,
+      <StartAPP />,
       document.getElementById('root')
       );
       
