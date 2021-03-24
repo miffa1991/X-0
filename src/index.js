@@ -1,44 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Board from './components/Board';
 import './index.css';
-const Square = (props) => { //клетка
-   
-      return (
-         <button 
-            className={'square '+ props.clasS} 
-            value={ props.value } 
-            onClick={ props.onClick } 
-         >
-            {props.value}
-         </button>
-         );
-}
-   
-const Board = (props) => { //поле
-      const  renderSquare = (i) => {
-         return <Square clasS={props.clasS[i]} value={props.squares[i]} onClick={ ()=>props.onClick(i) } />;
-      }
-         return (
-            <div>
-               <div className="status">{props.status}</div>
-                  <div className="board-row">
-                     {renderSquare(0)}
-                     {renderSquare(1)}
-                     {renderSquare(2)}
-                  </div>
-                  <div className="board-row">
-                     {renderSquare(3)}
-                     {renderSquare(4)}
-                     {renderSquare(5)}
-                  </div>
-                  <div className="board-row">
-                     {renderSquare(6)}
-                     {renderSquare(7)}
-                     {renderSquare(8)}
-                  </div>
-            </div>
-            );
-      }
       
       class Game extends React.Component { //игра
 
@@ -150,13 +113,11 @@ const Board = (props) => { //поле
                );
             }
          }
-         const StartAPP = (props) => {
-            return <Game /> ;
-         }
+
          // ========================================
          
    ReactDOM.render(
-      <StartAPP />,
+      <Game />,
       document.getElementById('root')
       );
       
@@ -175,7 +136,6 @@ const Board = (props) => { //поле
       for (let i = 0; i < lines.length; i++) {
          const [a, b, c] = lines[i];
          if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-
             return [squares[a],[a,b,c]];
          }
       }
